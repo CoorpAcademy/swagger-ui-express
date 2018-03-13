@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/CoorpAcademy/swagger-ui-express.svg?branch=master)](https://travis-ci.org/CoorpAcademy/swagger-ui-express)
+[![Build Status](https://travis-ci.org/CoorpAcademy/swagger-ui-express.svg?branch=master)](https://travis-ci.org/CoorpAcademy/swagger-ui-express) [![codecov](https://codecov.io/gh/CoorpAcademy/swagger-ui-express/branch/master/graph/badge.svg)](https://codecov.io/gh/CoorpAcademy/swagger-ui-express)
+
+
 
 # Swagger-ui-middleware
 
