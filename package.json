@@ -1,0 +1,49 @@
+{
+  "name": "@coorpacademy/swagger-ui-express",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "eslint": "eslint src/ *.js *.json --ext .js,.json",
+    "eslint:fix": "npm run eslint -- --fix",
+    "ava": "ava",
+    "nyc": "nyc npm run ava",
+    "test": "npm run eslint && npm run nyc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "serve-static": "^1.13.2",
+    "swagger-ui-dist": "^3.12.1"
+  },
+  "devDependencies": {
+    "@coorpacademy/eslint-plugin-coorpacademy": "^8.1.0",
+    "ava": "^0.25.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.18.2",
+    "nyc": "^11.6.0",
+    "supertest": "^3.0.0"
+  },
+  "ava": {
+    "files": [
+      "**/test/**/*.js"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "**/test/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "all": true
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+.nyc_output
+coverage
+.vscode
+.idea
+package-lock.json
+.prettierrc
+.DS_Store
