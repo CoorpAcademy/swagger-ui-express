@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/CoorpAcademy/swagger-ui-middleware.svg?branch=master)](https://travis-ci.org/CoorpAcademy/swagger-ui-middleware)
+[![Build Status](https://travis-ci.org/CoorpAcademy/swagger-ui-express.svg?branch=master)](https://travis-ci.org/CoorpAcademy/swagger-ui-express)
 
 # Swagger-ui-middleware
 
 ```javascript
 const express = require('express');
-const createSwaggerUiMiddleware = require('@coorpacademy/swagger-ui-middleware');
+const createSwaggerUiMiddleware = require('@coorpacademy/swagger-ui-express');
 
 const app = express();
 
