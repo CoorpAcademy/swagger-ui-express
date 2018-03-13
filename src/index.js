@@ -1,4 +1,5 @@
 const {promisify} = require('util');
+const {parse} = require('url');
 const {join} = require('path');
 const {readFile} = require('fs');
 const {Router} = require('express');
@@ -19,6 +20,13 @@ module.exports = ({
   const staticPublic = serveStatic(join(__dirname, '../public/'));
   const indexP = readFileP(indexPath, {encoding: 'UTF8'});
 
+  router.use((req, res, next) => {
+    if (req.path === swaggerUi) {
+      return res.redirect(`${swaggerUi}/${parse(req.url).search || ''}`);
+    }
+    next();
+  });
+
   router.get(apiDocs, (req, res) => {
     res.json(swaggerDoc);
   });
@@ -30,7 +38,9 @@ module.exports = ({
       next();
     },
     (req, res, next) => {
-      if (req.url !== '' && req.url !== '/') return next();
+      if (req.path !== '/') {
+        return next();
+      }
 
       return indexP.then(file => res.send(file)).catch(next);
     },
