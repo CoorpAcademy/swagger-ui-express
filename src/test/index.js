@@ -56,12 +56,9 @@ test('should serve swaggerUi', async t => {
 
   app.use(createSwaggerUIMiddleware({}));
 
-  t.deepEqual((await request(app).get('/explorer')).type, 'text/html');
-  t.deepEqual((await request(app).get('/explorer/swagger-ui.css')).type, 'text/css');
-  t.deepEqual(
-    (await request(app).get('/explorer/swagger-ui-bundle.js')).type,
-    'application/javascript'
-  );
+  t.is((await request(app).get('/explorer')).type, 'text/html');
+  t.is((await request(app).get('/explorer/swagger-ui.css')).type, 'text/css');
+  t.is((await request(app).get('/explorer/swagger-ui-bundle.js')).type, 'application/javascript');
 });
 
 test('should allow to override swaggerUi endpoint', async t => {
@@ -75,7 +72,7 @@ test('should allow to override swaggerUi endpoint', async t => {
 
   const response = await request(app).get('/swagger');
 
-  t.deepEqual(response.type, 'text/html');
+  t.is(response.type, 'text/html');
 });
 
 test('should allow to override index.html', async t => {
