@@ -4,11 +4,11 @@
   "description": "Express middleware to ship swagger ui",
   "main": "src/index.js",
   "scripts": {
-    "eslint": "eslint src/ *.js *.json --ext .js,.json",
-    "eslint:fix": "npm run eslint -- --fix",
+    "lint": "eslint src/ *.json --ext .js,.json",
+    "lint:fix": "npm run eslint -- --fix",
     "ava": "ava",
     "nyc": "nyc npm run ava",
-    "test": "npm run eslint && npm run nyc",
+    "test": "npm run lint && npm run nyc",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "Coorpacademy Tech Team",
@@ -27,17 +27,18 @@
     "swagger-ui-dist": "^3.30.0"
   },
   "devDependencies": {
-    "@coorpacademy/eslint-plugin-coorpacademy": "^8.1.0",
-    "ava": "^0.25.0",
+    "@coorpacademy/eslint-plugin-coorpacademy": "^9.3.1",
+    "ava": "^2.4.0",
     "babel-register": "^6.26.0",
-    "codecov": "^3.0.0",
-    "eslint": "^4.18.2",
-    "nyc": "^11.6.0",
-    "supertest": "^3.0.0"
+    "codecov": "^3.7.1",
+    "eslint": "^6.8.0",
+    "nyc": "^15.1.0",
+    "supertest": "^4.0.2"
   },
   "ava": {
     "files": [
-      "**/test/**/*.js"
+      "**/test/**/*.js",
+      "!**/fixtures/**/*"
     ]
   },
   "nyc": {
