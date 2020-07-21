@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/Coorpacademy/swagger-ui-express/issues/new"
   },
+  "engines": {
+    "node": ">=10.20.0"
+  },
   "dependencies": {
     "serve-static": "^1.13.2",
     "swagger-ui-dist": "^3.30.0"
