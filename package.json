@@ -1,35 +1,50 @@
 {
   "name": "@coorpacademy/swagger-ui-express",
   "version": "1.0.1",
-  "description": "",
+  "description": "Express middleware to ship swagger ui",
   "main": "src/index.js",
   "scripts": {
-    "eslint": "eslint src/ *.js *.json --ext .js,.json",
-    "eslint:fix": "npm run eslint -- --fix",
+    "lint": "eslint src/ test/ *.json --ext .js,.json",
+    "lint:fix": "npm run eslint -- --fix",
     "ava": "ava",
     "nyc": "nyc npm run ava",
-    "test": "npm run eslint && npm run nyc",
+    "test": "npm run lint && npm run nyc",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Coorpacademy Tech Team",
+  "license": "MIT",
+  "homepage": "https://github.com/Coorpacademy/swagger-ui-express",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Coorpacademy/swagger-ui-express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Coorpacademy/swagger-ui-express/issues/new"
+  },
+  "engines": {
+    "node": ">=10.20.0"
+  },
   "dependencies": {
-    "express": "^4.16.3",
-    "serve-static": "^1.13.2",
-    "swagger-ui-dist": "^3.12.1"
+    "serve-static": "^1.14.1",
+    "swagger-ui-dist": "^3.30.0"
+  },
+  "peerDependencies": {
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "@coorpacademy/eslint-plugin-coorpacademy": "^8.1.0",
-    "ava": "^0.25.0",
+    "@coorpacademy/eslint-plugin-coorpacademy": "^10.2.0",
+    "ava": "^3.10.1",
     "babel-register": "^6.26.0",
-    "codecov": "^3.0.0",
-    "eslint": "^4.18.2",
-    "nyc": "^11.6.0",
-    "supertest": "^3.0.0"
+    "codecov": "^3.7.1",
+    "eslint": "^7.5.0",
+    "express": "^4.17.1",
+    "nyc": "^15.1.0",
+    "supertest": "^4.0.2"
   },
   "ava": {
     "files": [
-      "**/test/**/*.js"
+      "test/**/*.test.js",
+      "!**/fixtures/**/*"
     ]
   },
   "nyc": {

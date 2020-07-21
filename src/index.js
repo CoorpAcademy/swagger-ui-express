@@ -1,5 +1,4 @@
 const {promisify} = require('util');
-const {parse} = require('url');
 const {join} = require('path');
 const {readFile} = require('fs');
 const {Router} = require('express');
@@ -20,9 +19,21 @@ module.exports = ({
   const staticPublic = serveStatic(join(__dirname, '../public/'));
   const indexP = readFileP(indexPath, {encoding: 'UTF8'});
 
+  const injectHeader = (req, res, next) => {
+    res.setHeader('Swagger-API-Docs-URL', apiDocs);
+    next();
+  };
+
+  const serveIndex = (req, res, next) => {
+    if (req.path !== '/') return next();
+
+    return indexP.then(file => res.send(file)).catch(next);
+  };
+
   router.use((req, res, next) => {
     if (req.path === swaggerUi) {
-      return res.redirect(`${swaggerUi}/${parse(req.url).search || ''}`);
+      const {search} = new URL(req.url, 'http://this-is-a-stub-base.fix');
+      return res.redirect(`${swaggerUi}/${search}`);
     }
     next();
   });
@@ -31,22 +42,7 @@ module.exports = ({
     res.json(swaggerDoc);
   });
 
-  router.use(
-    swaggerUi,
-    (req, res, next) => {
-      res.setHeader('Swagger-API-Docs-URL', apiDocs);
-      next();
-    },
-    (req, res, next) => {
-      if (req.path !== '/') {
-        return next();
-      }
-
-      return indexP.then(file => res.send(file)).catch(next);
-    },
-    staticSwaggerUi,
-    staticPublic
-  );
+  router.use(swaggerUi, injectHeader, serveIndex, staticSwaggerUi, staticPublic);
 
   return router;
 };
