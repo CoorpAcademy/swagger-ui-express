@@ -1,6 +1,6 @@
 {
   "name": "@coorpacademy/swagger-ui-express",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Express middleware to ship swagger ui",
   "main": "src/index.js",
   "scripts": {
