@@ -22,9 +22,11 @@
     "url": "https://github.com/Coorpacademy/swagger-ui-express/issues/new"
   },
   "dependencies": {
-    "express": "^4.16.3",
     "serve-static": "^1.13.2",
     "swagger-ui-dist": "^3.30.0"
+  },
+  "peerDependencies": {
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@coorpacademy/eslint-plugin-coorpacademy": "^9.3.1",
@@ -32,6 +34,7 @@
     "babel-register": "^6.26.0",
     "codecov": "^3.7.1",
     "eslint": "^6.8.0",
+    "express": "^4.17.1",
     "nyc": "^15.1.0",
     "supertest": "^4.0.2"
   },
