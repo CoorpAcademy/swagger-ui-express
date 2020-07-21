@@ -24,6 +24,10 @@
   "engines": {
     "node": ">=10.20.0"
   },
+  "files": [
+    "src",
+    "public"
+  ],
   "dependencies": {
     "serve-static": "^1.14.1",
     "swagger-ui-dist": "^3.30.0"
