@@ -4,7 +4,7 @@
   "description": "Express middleware to ship swagger ui",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src/ *.json --ext .js,.json",
+    "lint": "eslint src/ test/ *.json --ext .js,.json",
     "lint:fix": "npm run eslint -- --fix",
     "ava": "ava",
     "nyc": "nyc npm run ava",
@@ -37,7 +37,7 @@
   },
   "ava": {
     "files": [
-      "**/test/**/*.js",
+      "test/**/*.test.js",
       "!**/fixtures/**/*"
     ]
   },
