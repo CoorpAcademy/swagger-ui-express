@@ -1,5 +1,4 @@
 const {promisify} = require('util');
-const {parse} = require('url');
 const {join} = require('path');
 const {readFile} = require('fs');
 const {Router} = require('express');
@@ -33,7 +32,8 @@ module.exports = ({
 
   router.use((req, res, next) => {
     if (req.path === swaggerUi) {
-      return res.redirect(`${swaggerUi}/${parse(req.url).search || ''}`);
+      const {search} = new URL(req.url, 'http://this-is-a-stub-base.fix');
+      return res.redirect(`${swaggerUi}/${search}`);
     }
     next();
   });
